@@ -1,0 +1,379 @@
+/* =====================================
+   1. VARIABLES DE COLORES
+===================================== */
+
+:root {
+    --a: #ABA9BF;
+    --b: #BEB7DF;
+    --c: #C9DDFF;
+    --d: #ECB0E1;
+    --t: #2d2a3e;
+    --bg: #f7f5fc;
+}
+
+
+/* =====================================
+   2. CONFIGURACIÓN GENERAL
+===================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Nunito, sans-serif;
+    background: var(--bg);
+    color: var(--t);
+}
+
+h1,
+h2,
+h3 {
+    font-family: Fredoka, sans-serif;
+    margin: 0 0 10px;
+}
+
+
+/* =====================================
+   3. ENCABEZADO Y NAVEGACIÓN
+===================================== */
+
+header {
+    background: linear-gradient(90deg, var(--b), var(--d));
+    padding: 14px 24px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+header h1 {
+    font-size: 28px;
+    cursor: pointer;
+    margin: 0;
+}
+
+#bus {
+    flex: 1;
+    min-width: 160px;
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 24px;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+
+/* =====================================
+   4. BOTONES
+===================================== */
+
+button {
+    background: var(--t);
+    color: #fff;
+    border: 0;
+    border-radius: 24px;
+    padding: 9px 16px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 600;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--t);
+    outline-offset: 2px;
+}
+
+button.s {
+    background: var(--c);
+    color: var(--t);
+}
+
+button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+
+/* =====================================
+   5. CONTENIDO PRINCIPAL
+===================================== */
+
+main {
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
+
+
+/* =====================================
+   6. CATEGORÍAS
+===================================== */
+
+.cats {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.cats button {
+    background: var(--c);
+    color: var(--t);
+}
+
+.cats button.on {
+    background: var(--d);
+}
+
+
+/* =====================================
+   7. CUADRÍCULA DE PRODUCTOS
+===================================== */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 16px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px #2d2a3e18;
+    display: flex;
+    flex-direction: column;
+}
+
+.card img,
+.ph {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    background: var(--c);
+}
+
+
+/* =====================================
+   8. INFORMACIÓN DE PRODUCTOS
+===================================== */
+
+.info {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.row {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.pr {
+    font-family: Fredoka, sans-serif;
+    font-size: 22px;
+}
+
+.st {
+    color: #c9830a;
+}
+
+small {
+    color: #5d5a70;
+}
+
+
+/* =====================================
+   9. CAJAS Y CONTENEDORES
+===================================== */
+
+.box {
+    background: #fff;
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 10px #2d2a3e18;
+}
+
+
+/* =====================================
+   10. VENTANAS MODALES
+===================================== */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: #2d2a3e88;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+}
+
+.modal.on {
+    display: flex;
+}
+
+.modal > div {
+    background: #fff;
+    padding: 24px;
+    border-radius: 18px;
+    width: min(440px, 92vw);
+    max-height: 90vh;
+    overflow: auto;
+}
+
+
+/* =====================================
+   11. CARRITO DE COMPRAS
+===================================== */
+
+#cart {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: min(380px, 100vw);
+    background: #fff;
+    padding: 18px;
+    transform: translateX(100%);
+    transition: transform .25s;
+    z-index: 8;
+    overflow: auto;
+    box-shadow: -4px 0 20px #2d2a3e33;
+}
+
+#cart.on {
+    transform: none;
+}
+
+
+/* =====================================
+   12. FORMULARIOS
+===================================== */
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid var(--a);
+    border-radius: 10px;
+    font: inherit;
+}
+
+input[type=checkbox] {
+    width: auto;
+}
+
+
+/* =====================================
+   13. TABLAS
+===================================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td,
+th {
+    padding: 8px;
+    border-bottom: 1px solid var(--c);
+    text-align: left;
+}
+
+
+/* =====================================
+   14. PESTAÑAS Y MENSAJES
+===================================== */
+
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.msg {
+    color: #b0265a;
+    min-height: 20px;
+}
+
+
+/* =====================================
+   15. ENLACES Y BOTONES ESPECIALES
+===================================== */
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--t);
+    color: #fff;
+    border-radius: 24px;
+    padding: 9px 16px;
+    font-weight: 600;
+}
+
+.btn.s {
+    background: var(--c);
+    color: var(--t);
+}
+
+
+/* =====================================
+   16. CAJA DE CONTACTO Y ACCESO
+===================================== */
+
+.caja {
+    max-width: 400px;
+    margin: 40px auto;
+}
+
+.caja button {
+    width: 100%;
+    margin-top: 8px;
+}
+
+
+/* =====================================
+   17. IMPRESIÓN DE FACTURAS
+===================================== */
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #fac,
+    #fac * {
+        visibility: visible;
+    }
+
+    #fac {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+}
