@@ -434,6 +434,70 @@ app.post(
 );
 
 // =====================================
+// EDITAR PRODUCTO
+// =====================================
+
+app.put(
+    '/api/productos/:id',
+    auth(['vendedor', 'admin']),
+    wrap((req, res) => {
+
+        // Buscar producto
+        const p = db.prepare(
+            'SELECT * FROM products WHERE id=?'
+        ).get(req.params.id);
+
+        // Verificar permisos
+        if (
+            !p ||
+            (p.vendedor_id !== req.u.id && req.u.rol !== 'admin')
+        ) {
+            throw new Error('No puedes editar este producto');
+        }
+
+        // Obtener datos del formulario
+        const b = req.body;
+
+        // Validar campos obligatorios
+        need(
+            b.nombre,
+            b.precio,
+            b.stock,
+            b.categoria
+        );
+
+        // Validar precio y cantidad
+        if (+b.precio <= 0 || +b.stock < 0) {
+            throw new Error('Precio o stock inválido');
+        }
+
+        // Actualizar producto
+        db.prepare(`
+            UPDATE products
+            SET
+                nombre=?,
+                descripcion=?,
+                precio=?,
+                stock=?,
+                categoria=?,
+                imagen=?
+            WHERE id=?
+        `).run(
+            b.nombre,
+            b.descripcion || '',
+            +b.precio,
+            +b.stock,
+            b.categoria,
+            b.imagen || p.imagen,
+            p.id
+        );
+
+        // Confirmar actualización
+        res.json({ ok: 1 });
+
+    })
+);
+// =====================================
 // PEDIDOS Y FACTURAS
 // =====================================
 
